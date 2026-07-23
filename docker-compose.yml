@@ -1,0 +1,17 @@
+services:
+  plc-platform:
+    build: .
+    image: plc-data-platform:latest
+    container_name: plc-data-platform
+    ports:
+      - "3000:3000"            # 改成你想要的宿主机端口： "8080:3000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+      - PLC_MODE=mock          # mock=模拟数据(默认)；real=真实PLC(需驱动与网络可达)
+      - TICK_MS=1000           # 采集/推送频率(ms)
+      - ADMIN_USER=admin       # 登录账号(可用环境变量覆盖)
+      - ADMIN_PASS=admin123    # 登录密码(生产务必修改！)
+    volumes:
+      - ./data:/app/data       # 设备/点位/配置持久化
+    restart: unless-stopped
