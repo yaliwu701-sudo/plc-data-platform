@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLC 数据采集与管理平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- 侧边导航 -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">⬡</div>
+        <div class="brand-text">
+          <strong>PLC 数据平台</strong>
+          <span>采集 · 管理 · BI</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="nav-item active" data-view="overview"><span class="ico">▦</span>概览面板</a>
+        <a class="nav-item" data-view="devices"><span class="ico">⚙</span>设备与点位</a>
+        <a class="nav-item" data-view="trend"><span class="ico">∿</span>趋势分析</a>
+        <a class="nav-item" data-view="alarms"><span class="ico">⚠</span>报警中心</a>
+        <a class="nav-item" data-view="report"><span class="ico">▤</span>报表导出</a>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="mode-badge" id="modeBadge">模拟数据</div>
+        <select id="modeSel" class="select" style="font-size:12px;padding:6px 8px">
+          <option value="mock">模拟数据</option>
+          <option value="real">真实 PLC</option>
+        </select>
+        <div class="conn" id="connStatus"><span class="dot"></span>连接中…</div>
+        <div class="conn" id="plcStatus" style="font-size:11px;color:var(--text-faint)"></div>
+      </div>
+    </aside>
+
+    <!-- 主区域 -->
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title" id="viewTitle">概览面板</div>
+        <div class="topbar-actions">
+          <div class="clock" id="clock">--:--:--</div>
+          <span class="user-pill" id="userPill" style="font-size:12px;color:var(--text-soft)"></span>
+          <button class="btn ghost" id="logoutBtn" title="退出登录">退出</button>
+          <button class="btn ghost" id="themeToggle" title="切换明暗主题">🌓 主题</button>
+        </div>
+      </header>
+
+      <section class="view" id="view-overview"></section>
+      <section class="view hidden" id="view-devices"></section>
+      <section class="view hidden" id="view-trend"></section>
+      <section class="view hidden" id="view-alarms"></section>
+      <section class="view hidden" id="view-report"></section>
+    </main>
+  </div>
+
+  <!-- 提示条 -->
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <!-- 登录遮罩 -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+      <div class="brand-logo" style="margin:0 auto 10px">⬡</div>
+      <h2>PLC 数据平台</h2>
+      <p class="hint">请登录后进入控制台</p>
+      <form id="loginForm" autocomplete="off">
+        <div class="field"><label>用户名</label><input class="input" id="loginUser" value="admin" autocomplete="username"></div>
+        <div class="field"><label>密码</label><input class="input" type="password" id="loginPass" autocomplete="current-password" placeholder="默认 admin123"></div>
+        <button class="btn primary" type="submit" id="loginBtn">登 录</button>
+        <div class="login-err" id="loginErr"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/vendor/echarts.min.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
