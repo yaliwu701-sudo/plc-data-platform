@@ -1,0 +1,7 @@
+node_modules/
+logs/
+data/devices.json
+data/config.json
+data/port.txt
+*.log
+.env
