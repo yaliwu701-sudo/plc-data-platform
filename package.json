@@ -1,0 +1,39 @@
+{
+  "name": "plc-data-platform",
+  "version": "1.0.0",
+  "description": "PLC 数据采集与管理平台 + ECharts BI 面板（Node.js 全栈，支持欧姆龙/西门子/三菱/台达，模拟数据开箱即跑）",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "docker:build": "docker build -t plc-data-platform .",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down"
+  },
+  "keywords": [
+    "plc",
+    "scada",
+    "data-acquisition",
+    "echarts",
+    "bi",
+    "omron",
+    "siemens",
+    "mitsubishi",
+    "delta"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  },
+  "optionalDependencies": {
+    "omron-fins": "^0.5.0",
+    "mcprotocol": "^0.1.2",
+    "node-snap7": "^1.0.9",
+    "modbus-serial": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
